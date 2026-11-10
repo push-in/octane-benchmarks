@@ -1,13 +1,13 @@
 Running 15s test @ http://127.0.0.1:8400/_r/hello
   4 threads and 64 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency     6.75ms    1.77ms  20.50ms   80.14%
-    Req/Sec     2.38k   145.89     2.67k    61.33%
+    Latency     5.06ms    0.94ms  18.61ms   91.80%
+    Req/Sec     3.18k   231.14     6.15k    88.54%
   Latency Distribution
-     50%    6.54ms
-     75%    6.91ms
-     90%    8.26ms
-     99%   13.24ms
-  142275 requests in 15.00s, 21.98MB read
-Requests/sec:   9482.71
-Transfer/sec:      1.47MB
+     50%    5.07ms
+     75%    5.39ms
+     90%    5.61ms
+     99%    9.70ms
+  190669 requests in 15.10s, 29.46MB read
+Requests/sec:  12626.86
+Transfer/sec:      1.95MB

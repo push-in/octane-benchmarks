@@ -1,14 +1,14 @@
 PHPUnit 13.4.6 by Sebastian Bergmann and contributors.
 
 Runtime:       PHP 8.4.24
-Configuration: /work/octane/phpunit.xml.dist
+Configuration: /tmp/claude-1000/-home-davidbalbino-Documentos-Pushin-phast/781007fd-69ff-41eb-8e90-af47287b8a31/scratchpad/suite-work/octane/phpunit.xml.dist
 
 ...............................................................  63 / 238 ( 26%)
 .[36;1mS[0m[36;1mS[0m[36;1mS[0m[36;1mS[0m[36;1mS[0m[36;1mS[0m[36;1mS[0m[36;1mS[0m[36;1mS[0m[36;1mS[0m[36;1mS[0m[36;1mS[0m[36;1mS[0m[36;1mS[0m[36;1mS[0m............................................... 126 / 238 ( 52%)
 ...............................................[33;1mN[0m[33;1mN[0m........[36;1mS[0m[36;1mS[0m[36;1mS[0m[36;1mS[0m[36;1mS[0m[36;1mS[0m 189 / 238 ( 79%)
 [36;1mS[0m[36;1mS[0m.............[36;1mS[0m[36;1mS[0m[36;1mS[0m[36;1mS[0m[36;1mS[0m[36;1mS[0m[36;1mS[0m[36;1mS[0m[36;1mS[0m[36;1mS[0m[36;1mS[0m[36;1mS[0m[36;1mS[0m[36;1mS[0m[36;1mS[0m[36;1mS[0m[36;1mS[0m[36;1mS[0m[36;1mS[0m[36;1mS[0m..............               238 / 238 (100%)
 
-Time: 00:01.067, Memory: 70,50 MB
+Time: 00:01.219, Memory: 70,50 MB
 
 [30;43mOK, but there were issues![0m
 [30;43mTests: 238[0m[30;43m, Assertions: 454[0m[30;43m, PHPUnit Notices: 2[0m[30;43m, Skipped: 43[0m[30;43m.[0m

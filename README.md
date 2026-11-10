@@ -20,20 +20,27 @@ hardware.
 ### Octane's test suite
 
 Octane `2.x` with the PAM integration, commit
-[`94a5ae5`](https://github.com/push-in/octane/commit/94a5ae57382a732f56ab90e107dc1b8c0146ea1f).
+[`ccc1980`](https://github.com/push-in/octane/commit/ccc1980df8c6b7346fc9b2e0e9e2b3b0d924f086),
+PAM 2.2.14.
+
+Octane's own GitHub Actions workflows on that commit are green: all 21 `tests`
+jobs (PHP 8.2 to 8.5, Laravel 12 and 13, Swoole, Open Swoole and
+RoadRunner/FrankenPHP) and `static analysis`
+([tests run](https://github.com/push-in/octane/actions/runs/42835363646),
+[static analysis run](https://github.com/push-in/octane/actions/runs/42835364745)).
 
 | Run | Tests | Pass | Fail | Skipped |
 |---|---:|---:|---:|---:|
-| [On PAM's PHP 8.5.12](results/2026-11-09/octane-suite/upstream.txt) | 238 | 195 | 0 | 43 (Swoole-only: no `swoole` extension) |
-| [Same suite, every request and response through `PamClient`](results/2026-11-09/octane-suite/pam-driver.txt) | 238 | 195 | 0 | 43 |
-| [PHP 8.5.12 CLI with Swoole 6.2.3](results/2026-11-09/octane-suite/php85-cli-swoole.txt) | 238 | 238 | 0 | 0 |
+| [On PAM's PHP 8.5.12](results/2026-11-10/octane-suite/upstream.txt) | 238 | 195 | 0 | 43 (Swoole-only: no `swoole` extension) |
+| [Same suite, every request and response through `PamClient`](results/2026-11-10/octane-suite/pam-driver.txt) | 238 | 195 | 0 | 43 |
+| [PHP 8.5.12 CLI with Swoole 6.2.3](results/2026-11-10/octane-suite/php85-cli-swoole.txt) | 238 | 238 | 0 | 0 |
 
 In the second run, [`PamFakeClient`](readiness/octane-suite/adapter/PamFakeClient.php)
 replaces Octane's `FakeClient`: each of the 112 request/response exchanges of
 the suite also goes through `Laravel\Octane\Pam\PamClient`, and the status,
 body and cookies it writes are compared with what Laravel produced:
-[0 mismatches](results/2026-11-09/octane-suite/pam-crosscheck.json).
-Per-test results: [summary.md](results/2026-11-09/octane-suite/summary.md).
+[0 mismatches](results/2026-11-10/octane-suite/pam-crosscheck.json).
+Per-test results: [summary.md](results/2026-11-10/octane-suite/summary.md).
 
 ### Throughput and latency
 
@@ -49,33 +56,36 @@ Requests per second:
 
 | Endpoint | PAM | FrankenPHP | Swoole | RoadRunner |
 |---|---:|---:|---:|---:|
-| hello | 9,483 (8,949 to 10,004) | 8,892 (8,768 to 8,957) | 7,230 (6,927 to 7,734) | 6,128 (6,107 to 6,196) |
-| json | 8,779 (8,692 to 9,745) | 8,627 (8,535 to 8,672) | 6,915 (6,897 to 7,548) | 5,974 (5,949 to 5,997) |
-| db | 8,250 (7,380 to 8,367) | 7,303 (7,242 to 7,339) | 5,934 (5,893 to 6,047) | 5,070 (5,057 to 5,102) |
-| view | 7,753 (7,698 to 8,596) | 7,522 (7,435 to 7,543) | 6,242 (5,858 to 6,466) | 5,367 (5,338 to 5,374) |
+| hello | 12,187 (11,121 to 12,627) | 11,352 (11,165 to 11,526) | 9,200 (8,829 to 9,353) | 7,498 (7,373 to 7,552) |
+| json | 11,409 (10,634 to 12,219) | 10,854 (10,730 to 11,345) | 9,292 (9,105 to 9,403) | 7,319 (7,180 to 7,766) |
+| db | 9,880 (9,205 to 10,352) | 9,285 (9,056 to 9,606) | 7,966 (7,833 to 8,018) | 6,139 (5,980 to 6,237) |
+| view | 10,271 (9,409 to 10,800) | 9,263 (8,113 to 10,066) | 7,938 (7,865 to 7,958) | 6,602 (6,459 to 6,744) |
 
 Latency p50 / p99 in ms (p99 range in parentheses):
 
 | Endpoint | PAM | FrankenPHP | Swoole | RoadRunner |
 |---|---:|---:|---:|---:|
-| hello | 6.52 / 13.24 (8.09 to 14.50) | 7.01 / 12.20 (12.17 to 12.32) | 8.60 / 16.71 (10.19 to 19.31) | 10.31 / 13.28 (13.18 to 13.36) |
-| json | 6.68 / 14.97 (8.16 to 15.38) | 7.25 / 12.42 (12.34 to 12.59) | 8.48 / 17.56 (10.46 to 19.91) | 10.58 / 13.61 (13.54 to 13.70) |
-| db | 7.82 / 9.06 (8.92 to 16.38) | 8.56 / 13.55 (13.52 to 13.71) | 9.72 / 21.97 (21.60 to 23.79) | 12.44 / 16.01 (15.87 to 16.07) |
-| view | 7.55 / 16.78 (8.82 to 18.09) | 8.33 / 13.19 (13.14 to 13.22) | 10.19 / 16.85 (12.10 to 21.54) | 11.76 / 14.98 (14.90 to 15.05) |
+| hello | 5.19 / 11.37 (6.67 to 12.70) | 5.48 / 10.24 (10.04 to 10.80) | 6.62 / 14.88 (7.66 to 16.79) | 8.41 / 11.67 (10.97 to 11.97) |
+| json | 5.36 / 12.26 (6.82 to 13.01) | 5.76 / 10.42 (10.03 to 10.53) | 7.06 / 8.32 (7.52 to 14.49) | 8.64 / 11.95 (11.42 to 12.33) |
+| db | 6.32 / 8.88 (7.60 to 15.01) | 6.77 / 11.47 (11.13 to 11.77) | 8.08 / 9.17 (8.74 to 12.71) | 10.27 / 14.11 (13.31 to 14.39) |
+| view | 6.01 / 13.12 (7.32 to 14.65) | 6.76 / 11.36 (10.50 to 15.60) | 8.11 / 8.69 (8.63 to 9.14) | 9.53 / 12.93 (12.51 to 13.52) |
 
 | Server | Errors (all runs) | Container memory after the run, median (MiB) | Container peak (MiB) |
 |---|---:|---:|---:|
-| PAM | 0 | 390 | 401 |
-| FrankenPHP | 0 | 434 | 517 |
-| Swoole | 0 | 435 | 473 |
-| RoadRunner | 0 | 686 | 723 |
+| PAM | 0 | 453 | 515 |
+| FrankenPHP | 0 | 482 | 564 |
+| Swoole | 0 | 481 | 517 |
+| RoadRunner | 0 | 712 | 752 |
 
 Reading these numbers:
 
-- PAM has the highest median throughput on every endpoint: 1.8 % (json) to 13 %
-  (db) above FrankenPHP, 24 to 39 % above Swoole and 44 to 63 % above RoadRunner.
+- PAM has the highest median throughput on every endpoint: 5.1 % (json) to
+  10.9 % (view) above FrankenPHP, 23 to 33 % above Swoole and 56 to 63 % above
+  RoadRunner.
 - FrankenPHP has a lower and steadier p99 than PAM on `hello`, `json` and
-  `view`; PAM's p99 also varies more between rounds.
+  `view`; PAM's p99 varies more between rounds (for example 6.67 to 12.70 ms on
+  `hello`, against 10.04 to 10.80 ms for FrankenPHP). Swoole has the lowest
+  median p99 on `json` and `view`.
 - Memory is the cgroup's `memory.current` / `memory.peak` and includes the page cache.
 
 ### Zero-loss reload
@@ -136,8 +146,7 @@ closes. `tcp_migrate_req=1` (Linux 5.14+) moves it to another listener instead.
   `memory_limit=512M`.
 - **Pinned versions.** [`versions.env`](versions.env): PAM 2.2.14 (official
   release, checksum verified by its installer; the throughput rounds and
-  Octane's suite above ran on PAM 2.2.13, the zero-loss and behavior checks on
-  2.2.14), FrankenPHP 1.13.5 (static
+  every result on this page uses 2.2.14), FrankenPHP 1.13.5 (static
   binary), `php:8.5.12-cli-bookworm` with Swoole 6.2.3 and RoadRunner
   2025.1.15, Composer 2.9.3. Dockerfiles in [`docker/`](docker).
 - **Pinned CPUs.** The server container runs on CPUs 0-7 (four performance
@@ -146,14 +155,12 @@ closes. `tcp_migrate_req=1` (Linux 5.14+) moves it to another listener instead.
 - **Rounds.** 5 rounds; each round runs every server, the order rotating per
   round. For each endpoint: 5 s warmup, then 15 s measured with `--latency`.
 - **Machine.** Intel Core Ultra 9 185H laptop, 30 GiB RAM, Linux 7.0.11,
-  Docker 28.1.1. The CPU governor was `powersave` (`energy_performance_preference`
-  `balance_performance`): setting `performance` needs root
-  (`sudo cpupower frequency-set -g performance`), which this run did not have.
-  CPU pinning and rotating rounds limit the effect; the spread is reported.
-  The run started only after the 1-minute load average stayed below 2 for
-  5 minutes; [`load.csv`](results/2026-11-10/load.csv) has the load before each
-  server run (about 10 during the run is the benchmark itself: 8 workers plus
-  4 `wrk` threads).
+  Docker 28.1.1, CPU governor `performance`
+  ([`machine.json`](results/2026-11-10/machine.json) records it at the start
+  and the end of the run). The run started only after the 1-minute load
+  average stayed below 2 for 5 minutes; [`load.csv`](results/2026-11-10/load.csv)
+  has the load before each server run (about 10 to 12 during the run is the
+  benchmark itself: 8 workers plus 4 `wrk` threads).
 
 ## Run it
 
