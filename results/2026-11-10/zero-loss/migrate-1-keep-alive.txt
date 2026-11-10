@@ -2,16 +2,16 @@ tcp_migrate_req=1
 Running 1m test @ http://127.0.0.1:8500/_r/hello
   4 threads and 64 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency    10.29ms    8.74ms 132.46ms   96.69%
-    Req/Sec     1.74k   304.48     2.97k    94.79%
+    Latency    11.02ms    9.01ms 130.61ms   96.54%
+    Req/Sec     1.62k   293.75     2.76k    94.25%
   Latency Distribution
-     50%    8.92ms
-     75%    9.32ms
-     90%    9.84ms
-     99%   62.43ms
-  416219 requests in 1.00m, 64.37MB read
-Requests/sec:   6934.19
-Transfer/sec:      1.07MB
+     50%    9.30ms
+     75%   10.85ms
+     90%   11.92ms
+     99%   64.26ms
+  386034 requests in 1.00m, 59.72MB read
+Requests/sec:   6429.72
+Transfer/sec:      0.99MB
 RELOADS=13 FAILED_RELOADS=0
 --- reload log
      13    INFO  Reloading workers...  
@@ -34,5 +34,4 @@ Pam master activated worker generation 10
 Pam master activated worker generation 11
 Pam master activated worker generation 12
 Pam master activated worker generation 13
-http://127.0.0.1:8500
 Pam master activated worker generation 14

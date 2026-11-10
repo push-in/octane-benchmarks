@@ -80,17 +80,23 @@ Reading these numbers:
 
 ### Zero-loss reload
 
-`octane:start --server=pam --workers=4 --max-requests=2000`, `wrk -t4 -c64 -d60s`
-on `/_r/hello`, and `octane:reload --server=pam` every 4 seconds (13 reloads per
-run, none failed), in the PAM container's own network namespace
-([zero-loss.csv](results/2026-11-10/zero-loss/zero-loss.csv)).
+PAM 2.2.14, `octane:start --server=pam --workers=4 --max-requests=2000`,
+`wrk -t4 -c64 -d60s` on `/_r/hello`, and `octane:reload --server=pam` every 4
+seconds (12 or 13 reloads per run, none failed), in the PAM container's own
+network namespace ([zero-loss.csv](results/2026-11-10/zero-loss/zero-loss.csv)).
 
 | `net.ipv4.tcp_migrate_req` | Connections | Requests | Failed |
 |---|---|---:|---:|
-| 1 (recommended) | keep-alive | [416,219](results/2026-11-10/zero-loss/migrate-1-keep-alive.txt) | 0 |
-| 1 (recommended) | new connection per request | [413,337](results/2026-11-10/zero-loss/migrate-1-close.txt) | 0 |
-| 0 (kernel default) | keep-alive | [418,317](results/2026-11-10/zero-loss/migrate-0-keep-alive.txt) | 0 |
-| 0 (kernel default) | new connection per request | [415,427](results/2026-11-10/zero-loss/migrate-0-close.txt) | 2 (socket write errors) |
+| 1 (recommended) | keep-alive | [386,034](results/2026-11-10/zero-loss/migrate-1-keep-alive.txt) | 0 |
+| 1 (recommended) | new connection per request | [341,069](results/2026-11-10/zero-loss/migrate-1-close.txt) | 1 (socket write error) |
+| 0 (kernel default) | keep-alive | [374,555](results/2026-11-10/zero-loss/migrate-0-keep-alive.txt) | 0 |
+| 0 (kernel default) | new connection per request | [398,866](results/2026-11-10/zero-loss/migrate-0-close.txt) | 3 (socket write errors) |
+
+Two more runs of each version on the same machine (failed requests, in the
+table's order): PAM 2.2.14 `0 / 0 / 0 / 1` and `0 / 0 / 1 / 2`, PAM 2.2.13
+`0 / 0 / 0 / 2` and `0 / 0 / 0 / 3`. A failure here is a single socket error
+out of 300k to 420k requests; with `tcp_migrate_req=1` the new-connection case
+lost 1 request in 1 of the 3 PAM 2.2.14 runs and none in the PAM 2.2.13 runs.
 
 PAM reloads make-before-break: the new workers boot before the old ones drain.
 Workers share the port with `SO_REUSEPORT`; with the kernel default, Linux
@@ -99,14 +105,18 @@ closes. `tcp_migrate_req=1` (Linux 5.14+) moves it to another listener instead.
 
 ### Request timeout and uploads
 
-[behavior.txt](results/2026-11-10/behavior/behavior.txt), PAM container, 2 workers,
-PHP `memory_limit=128M`:
+[behavior.txt](results/2026-11-10/behavior/behavior.txt), PAM 2.2.14 container,
+2 workers, PHP `memory_limit=128M`:
 
 - A handler sleeping 6 s with `octane.max_execution_time=2` gets
   `504 Gateway Timeout` after 2.10 s; the worker is replaced and the next 20
   requests return 200.
+- `response()->send()`, which sends a raw `HTTP/1.1 200 OK` status line, returns
+  200 on every request (PAM 2.2.13 answered 500 on PHP 8.5).
+- A 100 MB upload whose handler is cut by the 2 s timeout: 504 after 2.14 s,
+  no temporary file left behind (PAM 2.2.13 left it when the worker exited).
 - A 100 MB and a 1 GB multipart upload: SHA-256 verified before and after
-  `UploadedFile::move()`, PHP peak memory 12 MiB, worker peak RSS 64 and 66 MiB,
+  `UploadedFile::move()`, PHP peak memory 14 MiB, worker peak RSS 65 and 68 MiB,
   no temporary file left behind. PAM streams multipart bodies to
   `upload_tmp_dir` and enforces `upload_max_filesize` / `post_max_size`.
 
@@ -124,8 +134,10 @@ PHP `memory_limit=128M`:
 - **Same PHP.** PHP 8.5.12 everywhere with [`docker/bench.ini`](docker/bench.ini):
   OPcache with JIT `tracing`, 128 MiB JIT buffer, no timestamp validation,
   `memory_limit=512M`.
-- **Pinned versions.** [`versions.env`](versions.env): PAM 2.2.13 (official
-  release, checksum verified by its installer), FrankenPHP 1.13.5 (static
+- **Pinned versions.** [`versions.env`](versions.env): PAM 2.2.14 (official
+  release, checksum verified by its installer; the throughput rounds and
+  Octane's suite above ran on PAM 2.2.13, the zero-loss and behavior checks on
+  2.2.14), FrankenPHP 1.13.5 (static
   binary), `php:8.5.12-cli-bookworm` with Swoole 6.2.3 and RoadRunner
   2025.1.15, Composer 2.9.3. Dockerfiles in [`docker/`](docker).
 - **Pinned CPUs.** The server container runs on CPUs 0-7 (four performance

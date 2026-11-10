@@ -2,17 +2,17 @@ tcp_migrate_req=0
 Running 1m test @ http://127.0.0.1:8500/_r/hello
   4 threads and 64 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency    10.27ms    8.92ms 132.36ms   96.74%
-    Req/Sec     1.74k   307.62     2.38k    87.42%
+    Latency    10.83ms    9.91ms 145.10ms   96.62%
+    Req/Sec     1.67k   315.41     2.32k    89.04%
   Latency Distribution
-     50%    9.03ms
-     75%    9.62ms
-     90%   10.17ms
-     99%   63.16ms
-  415427 requests in 1.00m, 71.71MB read
-  Socket errors: connect 0, read 0, write 2, timeout 0
-Requests/sec:   6920.21
-Transfer/sec:      1.19MB
+     50%    9.28ms
+     75%    9.99ms
+     90%   11.60ms
+     99%   69.66ms
+  398866 requests in 1.00m, 68.85MB read
+  Socket errors: connect 0, read 0, write 3, timeout 0
+Requests/sec:   6644.03
+Transfer/sec:      1.15MB
 RELOADS=13 FAILED_RELOADS=0
 --- reload log
      13    INFO  Reloading workers...  

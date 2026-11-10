@@ -1,12 +1,15 @@
-pam: pam 2.2.13 memory_limit=128M
-timeout: status=504 seconds=2.102311 (octane.max_execution_time=2, handler sleeps 6 s)
+pam: pam 2.2.14 memory_limit=128M
+timeout: status=504 seconds=2.101290 (octane.max_execution_time=2, handler sleeps 6 s)
 after timeout: 20/20 requests 200
-upload 100 MB: sha256 match, move() sha256 match, ms=373, php_peak_mib=12, worker_peak_rss_mib=64, temp_files_left=0
-upload 1024 MB: sha256 match, move() sha256 match, ms=3125, php_peak_mib=12, worker_peak_rss_mib=66, temp_files_left=0
+response()->send() (raw HTTP/ status line): 200 200 200
+timeout during a 100 MB upload: status=504 seconds=2.140481, temp_files_left=0
+upload 100 MB: sha256 match, move() sha256 match, ms=302, php_peak_mib=14, worker_peak_rss_mib=65, temp_files_left=0
+upload 1024 MB: sha256 match, move() sha256 match, ms=2816, php_peak_mib=14, worker_peak_rss_mib=68, temp_files_left=0
 --- server log
    INFO  Server running….  
   Local: http://127.0.0.1:8500 
   Press Ctrl+C to stop the server
+   ERROR  a request exceeded its hard deadline; answered 504 and recycling this worker.  
    ERROR  a request exceeded its hard deadline; answered 504 and recycling this worker.  
    INFO  Server running….  
   Local: http://127.0.0.1:8500 

@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # PAM behavior checks through `octane:start --server=pam`: a request past
-# octane.max_execution_time (2 s), then, with the default 30 s, 100 MB and
+# octane.max_execution_time (2 s), `response()->send()`, a 100 MB upload cut by
+# the timeout, then, with the default 30 s, 100 MB and
 # 1 GB uploads with PHP's default memory_limit (128M). Runs in the PAM container.
 source "$(dirname "$0")/lib.sh"
 OUT="$RESULTS/behavior"
@@ -30,6 +31,14 @@ docker_run --name bench-behavior --cpuset-cpus 0-11 --tmpfs /data:size=1100m \
     echo "timeout: $(curl -s -o /dev/null -w "status=%{http_code} seconds=%{time_total}" $U/sleep/6000) (octane.max_execution_time=2, handler sleeps 6 s)"
     ok=0; for i in $(seq 1 20); do [ "$(curl -s -o /dev/null -w "%{http_code}" $U/hello)" = 200 ] && ok=$((ok + 1)); done
     echo "after timeout: $ok/20 requests 200"
+    sent=""; for i in 1 2 3; do sent="$sent $(curl -s -o /dev/null -w "%{http_code}" $U/send)"; done
+    echo "response()->send() (raw HTTP/ status line):$sent"
+    head -c $((100 * 1048576)) /dev/urandom > /data/upload.bin
+    touch /tmp/upload.start
+    status=$(curl -s -o /dev/null -w "status=%{http_code} seconds=%{time_total}" -F file=@/data/upload.bin $U/upload-sleep/6000)
+    rm -f /data/upload.bin
+    left=1; for i in $(seq 1 50); do left=$(find /tmp -maxdepth 1 -name "php*" -newer /tmp/upload.start | wc -l); [ "$left" = 0 ] && break; sleep 0.2; done
+    echo "timeout during a 100 MB upload: $status, temp_files_left=$left"
     timeout 30 pam artisan octane:stop --server=pam >/dev/null || true
     sleep 2
     start_server 30
