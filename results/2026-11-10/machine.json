@@ -1,0 +1,19 @@
+{
+  "date": "2026-11-10T11:09:05Z",
+  "kernel": "7.0.11-76070011-generic",
+  "cpu": "Intel(R) Core(TM) Ultra 9 185H",
+  "threads": "22",
+  "cpu_max_mhz": "0 4800.0000; 1 5100.0000; 2 5100.0000; 3 5100.0000; 4 5100.0000; 5 4800.0000; 6 4800.0000; 7 4800.0000; 8 4800.0000; 9 4800.0000; 10 4800.0000; 11 4800.0000; 12 3800.0000; 13 3800.0000; 14 3800.0000; 15 3800.0000; 16 3800.0000; 17 3800.0000; 18 3800.0000; 19 3800.0000; 20 2500.0000; 21 2500.0000;",
+  "memory": "30Gi",
+  "governor": "powersave",
+  "energy_performance_preference": "balance_performance",
+  "load_average_at_start": "1.14 1.27 1.26 2/1565 2334997",
+  "docker": "28.1.1",
+  "wrk": "wrk debian/4.1.0-3build1 [epoll] Copyright (C) 2012 Will Glozer",
+  "images": "octane-bench/php-octane:6.2.3-2025.1.15 4c475c739364\noctane-bench/frankenphp:1.13.5 1557ec844692\noctane-bench/pam:2.2.13 54ac3985b005",
+  "tcp_migrate_req_host": "0",
+  "other_containers": "jolly_poincare",
+  "load_average_at_end": "10.69 10.95 9.45 2/1555 2350409",
+  "governor_at_end": "powersave",
+  "date_end": "2026-11-10T11:37:14Z"
+}

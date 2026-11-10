@@ -1,0 +1,5 @@
+PHP 8.5.12 (cli) (built: Nov  5 2026 07:22:07) (NTS)
+Version => 6.2.3
+
+[30;43mOK, but there were issues![0m
+[30;43mTests: 238[0m[30;43m, Assertions: 531[0m[30;43m, PHPUnit Notices: 2[0m[30;43m.[0m

@@ -1,0 +1,38 @@
+tcp_migrate_req=0
+Running 1m test @ http://127.0.0.1:8500/_r/hello
+  4 threads and 64 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    10.21ms    8.59ms 138.29ms   96.79%
+    Req/Sec     1.75k   299.85     2.67k    93.71%
+  Latency Distribution
+     50%    8.86ms
+     75%    9.30ms
+     90%    9.81ms
+     99%   61.30ms
+  418317 requests in 1.00m, 64.70MB read
+Requests/sec:   6969.34
+Transfer/sec:      1.08MB
+RELOADS=13 FAILED_RELOADS=0
+--- reload log
+     13    INFO  Reloading workers...  
+
+   INFO  Stopping server...  
+
+--- server log
+   INFO  Server running….  
+  Local: http://127.0.0.1:8500 
+  Press Ctrl+C to stop the server
+   worker=2http://127.0.0.1:8500
+Pam master activated worker generation 2
+Pam master activated worker generation 3
+Pam master activated worker generation 4
+Pam master activated worker generation 5
+Pam master activated worker generation 6
+Pam master activated worker generation 7
+Pam master activated worker generation 8
+Pam master activated worker generation 9
+Pam master activated worker generation 10
+Pam master activated worker generation 11
+Pam master activated worker generation 12
+Pam master activated worker generation 13
+Pam master activated worker generation 14
