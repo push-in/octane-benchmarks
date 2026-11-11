@@ -1,0 +1,27 @@
+HTTP/1.1 200 OK
+content-type: text/html; charset=utf-8
+cache-control: public, s-maxage=60
+etag: "pam-cd1856e99b6266ab635375b6"
+age: 0
+x-pam-cache: MISS
+content-length: 986
+date: Wed, 11 Nov 2026 09:17:16 GMT
+
+HTTP/1.1 200 OK
+content-type: text/html; charset=utf-8
+cache-control: public, s-maxage=60
+etag: "pam-cd1856e99b6266ab635375b6"
+age: 0
+x-pam-cache: HIT
+content-length: 986
+date: Wed, 11 Nov 2026 09:17:16 GMT
+
+HTTP/1.1 200 OK
+content-type: text/html; charset=utf-8
+cache-control: public, s-maxage=60
+etag: "pam-cd1856e99b6266ab635375b6"
+age: 20
+x-pam-cache: HIT
+content-length: 986
+date: Wed, 11 Nov 2026 09:17:57 GMT
+

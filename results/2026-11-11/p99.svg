@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" width="760" height="400" role="img" aria-label="p99 latency (lower is better)">
+<style>svg{font-family:system-ui,-apple-system,Segoe UI,sans-serif}.bg{fill:#fcfcfb}.t1{fill:#1f1f1e}.t2{fill:#5f5e5a}.grid{stroke:#e4e3de}.whisker{stroke:#1f1f1e}.s0{fill:#2a78d6}.s1{fill:#eb6834}.s2{fill:#1baf7a}.s3{fill:#eda100}@media (prefers-color-scheme: dark){.bg{fill:#1a1a19}.t1{fill:#f0efec}.t2{fill:#c3c2b7}.grid{stroke:#34332f}.whisker{stroke:#f0efec}.s0{fill:#3987e5}.s1{fill:#d95926}.s2{fill:#199e70}.s3{fill:#c98500}}</style>
+<rect class="bg" width="760" height="400" rx="8"/>
+<text class="t1" x="70" y="26" font-size="16" font-weight="600">p99 latency (lower is better)</text>
+<rect class="s0" x="70" y="40" width="10" height="10" rx="2"/><text class="t2" x="84" y="49" font-size="12">PAM</text>
+<rect class="s1" x="128" y="40" width="10" height="10" rx="2"/><text class="t2" x="142" y="49" font-size="12">FrankenPHP</text>
+<rect class="s2" x="242" y="40" width="10" height="10" rx="2"/><text class="t2" x="256" y="49" font-size="12">Swoole</text>
+<rect class="s3" x="324" y="40" width="10" height="10" rx="2"/><text class="t2" x="338" y="49" font-size="12">RoadRunner</text>
+<line class="grid" x1="70" x2="740" y1="350.0" y2="350.0" stroke-width="1"/><text class="t2" x="62" y="354.0" font-size="11" text-anchor="end">0.0</text>
+<line class="grid" x1="70" x2="740" y1="312.6" y2="312.6" stroke-width="1"/><text class="t2" x="62" y="316.6" font-size="11" text-anchor="end">2.5</text>
+<line class="grid" x1="70" x2="740" y1="275.2" y2="275.2" stroke-width="1"/><text class="t2" x="62" y="279.2" font-size="11" text-anchor="end">5.0</text>
+<line class="grid" x1="70" x2="740" y1="237.7" y2="237.7" stroke-width="1"/><text class="t2" x="62" y="241.7" font-size="11" text-anchor="end">7.5</text>
+<line class="grid" x1="70" x2="740" y1="200.3" y2="200.3" stroke-width="1"/><text class="t2" x="62" y="204.3" font-size="11" text-anchor="end">10.0</text>
+<line class="grid" x1="70" x2="740" y1="162.9" y2="162.9" stroke-width="1"/><text class="t2" x="62" y="166.9" font-size="11" text-anchor="end">12.5</text>
+<line class="grid" x1="70" x2="740" y1="125.5" y2="125.5" stroke-width="1"/><text class="t2" x="62" y="129.5" font-size="11" text-anchor="end">15.0</text>
+<line class="grid" x1="70" x2="740" y1="88.0" y2="88.0" stroke-width="1"/><text class="t2" x="62" y="92.0" font-size="11" text-anchor="end">17.5</text>
+<text class="t2" x="14" y="210.0" font-size="11" transform="rotate(-90 14 210.0)" text-anchor="middle">ms</text>
+<path class="s0" d="M93.8,350.0 V239.0 Q93.8,235.0 97.8,235.0 H117.8 Q121.8,235.0 121.8,239.0 V350.0 Z"><title>PAM, hello: 7.7 ms (rounds 7.5 to 13.9)</title></path>
+<line class="whisker" x1="107.8" x2="107.8" y1="238.3" y2="141.3" stroke-width="1.5"/>
+<path class="s1" d="M123.8,350.0 V181.6 Q123.8,177.6 127.8,177.6 H147.8 Q151.8,177.6 151.8,181.6 V350.0 Z"><title>FrankenPHP, hello: 11.5 ms (rounds 10.8 to 12.4)</title></path>
+<line class="whisker" x1="137.8" x2="137.8" y1="189.1" y2="164.8" stroke-width="1.5"/>
+<path class="s2" d="M153.8,350.0 V211.5 Q153.8,207.5 157.8,207.5 H177.8 Q181.8,207.5 181.8,211.5 V350.0 Z"><title>Swoole, hello: 9.5 ms (rounds 8.3 to 17.3)</title></path>
+<line class="whisker" x1="167.8" x2="167.8" y1="225.2" y2="90.7" stroke-width="1.5"/>
+<path class="s3" d="M183.8,350.0 V150.4 Q183.8,146.4 187.8,146.4 H207.8 Q211.8,146.4 211.8,150.4 V350.0 Z"><title>RoadRunner, hello: 13.6 ms (rounds 13.0 to 13.8)</title></path>
+<line class="whisker" x1="197.8" x2="197.8" y1="156.0" y2="144.0" stroke-width="1.5"/>
+<text class="t1" x="153.8" y="370" font-size="12" text-anchor="middle">hello</text>
+<path class="s0" d="M261.2,350.0 V233.7 Q261.2,229.7 265.2,229.7 H285.2 Q289.2,229.7 289.2,233.7 V350.0 Z"><title>PAM, json: 8.0 ms (rounds 7.8 to 14.2)</title></path>
+<line class="whisker" x1="275.2" x2="275.2" y1="232.8" y2="137.1" stroke-width="1.5"/>
+<path class="s1" d="M291.2,350.0 V176.2 Q291.2,172.2 295.2,172.2 H315.2 Q319.2,172.2 319.2,176.2 V350.0 Z"><title>FrankenPHP, json: 11.9 ms (rounds 11.5 to 12.2)</title></path>
+<line class="whisker" x1="305.2" x2="305.2" y1="177.4" y2="167.4" stroke-width="1.5"/>
+<path class="s2" d="M321.2,350.0 V222.7 Q321.2,218.7 325.2,218.7 H345.2 Q349.2,218.7 349.2,222.7 V350.0 Z"><title>Swoole, json: 8.8 ms (rounds 8.3 to 13.9)</title></path>
+<line class="whisker" x1="335.2" x2="335.2" y1="225.8" y2="141.5" stroke-width="1.5"/>
+<path class="s3" d="M351.2,350.0 V145.6 Q351.2,141.6 355.2,141.6 H375.2 Q379.2,141.6 379.2,145.6 V350.0 Z"><title>RoadRunner, json: 13.9 ms (rounds 13.5 to 14.4)</title></path>
+<line class="whisker" x1="365.2" x2="365.2" y1="147.3" y2="134.9" stroke-width="1.5"/>
+<text class="t1" x="321.2" y="370" font-size="12" text-anchor="middle">json</text>
+<path class="s0" d="M428.8,350.0 V137.3 Q428.8,133.3 432.8,133.3 H452.8 Q456.8,133.3 456.8,137.3 V350.0 Z"><title>PAM, db: 14.5 ms (rounds 9.0 to 16.4)</title></path>
+<line class="whisker" x1="442.8" x2="442.8" y1="215.0" y2="104.7" stroke-width="1.5"/>
+<path class="s1" d="M458.8,350.0 V162.8 Q458.8,158.8 462.8,158.8 H482.8 Q486.8,158.8 486.8,162.8 V350.0 Z"><title>FrankenPHP, db: 12.8 ms (rounds 12.2 to 13.4)</title></path>
+<line class="whisker" x1="472.8" x2="472.8" y1="167.1" y2="150.0" stroke-width="1.5"/>
+<path class="s2" d="M488.8,350.0 V200.3 Q488.8,196.3 492.8,196.3 H512.8 Q516.8,196.3 516.8,200.3 V350.0 Z"><title>Swoole, db: 10.3 ms (rounds 9.9 to 12.3)</title></path>
+<line class="whisker" x1="502.8" x2="502.8" y1="201.8" y2="165.7" stroke-width="1.5"/>
+<path class="s3" d="M518.8,350.0 V112.0 Q518.8,108.0 522.8,108.0 H542.8 Q546.8,108.0 546.8,112.0 V350.0 Z"><title>RoadRunner, db: 16.2 ms (rounds 15.9 to 16.9)</title></path>
+<line class="whisker" x1="532.8" x2="532.8" y1="111.8" y2="96.9" stroke-width="1.5"/>
+<text class="t1" x="488.8" y="370" font-size="12" text-anchor="middle">db</text>
+<path class="s0" d="M596.2,350.0 V226.0 Q596.2,222.0 600.2,222.0 H620.2 Q624.2,222.0 624.2,226.0 V350.0 Z"><title>PAM, view: 8.6 ms (rounds 8.2 to 8.7)</title></path>
+<line class="whisker" x1="610.2" x2="610.2" y1="227.9" y2="219.3" stroke-width="1.5"/>
+<path class="s1" d="M626.2,350.0 V167.9 Q626.2,163.9 630.2,163.9 H650.2 Q654.2,163.9 654.2,167.9 V350.0 Z"><title>FrankenPHP, view: 12.4 ms (rounds 11.8 to 14.5)</title></path>
+<line class="whisker" x1="640.2" x2="640.2" y1="173.2" y2="133.4" stroke-width="1.5"/>
+<path class="s2" d="M656.2,350.0 V194.7 Q656.2,190.7 660.2,190.7 H680.2 Q684.2,190.7 684.2,194.7 V350.0 Z"><title>Swoole, view: 10.6 ms (rounds 9.7 to 11.2)</title></path>
+<line class="whisker" x1="670.2" x2="670.2" y1="205.3" y2="182.6" stroke-width="1.5"/>
+<path class="s3" d="M686.2,350.0 V122.0 Q686.2,118.0 690.2,118.0 H710.2 Q714.2,118.0 714.2,122.0 V350.0 Z"><title>RoadRunner, view: 15.5 ms (rounds 14.5 to 16.0)</title></path>
+<line class="whisker" x1="700.2" x2="700.2" y1="132.5" y2="109.9" stroke-width="1.5"/>
+<text class="t1" x="656.2" y="370" font-size="12" text-anchor="middle">view</text>
+<text class="t2" x="740" y="390" font-size="10" text-anchor="end">Bar: median of 5 rounds. Line: slowest to fastest round.</text>
+</svg>

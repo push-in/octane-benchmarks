@@ -1,0 +1,9 @@
+
+   INFO  Server running….  
+
+
+  Local: http://127.0.0.1:8400 
+
+  Press Ctrl+C to stop the server
+
+pam: post-boot zygote ready in 174 ms; forking workers from the booted application

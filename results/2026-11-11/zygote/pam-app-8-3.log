@@ -1,0 +1,124 @@
+pam: workers bind their own listeners (listener registry unavailable: listener registry path is too long)
+Pam control plane listening on http://127.0.0.1:8499
+pam: post-boot zygote ready in 242 ms; forking workers from the booted application
+● READY Pam listening on http://127.0.0.1:8400 worker=1
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+● READY Pam listening on http://127.0.0.1:8400 worker=2
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+● READY Pam listening on http://127.0.0.1:8400 worker=3
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+● READY Pam listening on http://127.0.0.1:8400 worker=4
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+● READY Pam listening on http://127.0.0.1:8400 worker=5
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+● READY Pam listening on http://127.0.0.1:8400 worker=6
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+● READY Pam listening on http://127.0.0.1:8400 worker=7
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+● READY Pam listening on http://127.0.0.1:8400 worker=8
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+Pam master 4047191 started 8 worker(s); send SIGHUP for zero-downtime reload
+pam: worker 1 generation 1 exited with signal: 9 (SIGKILL); restarting
+● READY Pam listening on http://127.0.0.1:8400 worker=1
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+pam: worker 2 generation 1 exited with signal: 9 (SIGKILL); restarting
+● READY Pam listening on http://127.0.0.1:8400 worker=2
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+pam: worker 3 generation 1 exited with signal: 9 (SIGKILL); restarting
+● READY Pam listening on http://127.0.0.1:8400 worker=3
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+pam: worker 4 generation 1 exited with signal: 9 (SIGKILL); restarting
+● READY Pam listening on http://127.0.0.1:8400 worker=4
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+pam: worker 5 generation 1 exited with signal: 9 (SIGKILL); restarting
+● READY Pam listening on http://127.0.0.1:8400 worker=5
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+pam: post-boot zygote ready in 224 ms; forking workers from the booted application
+● READY Pam listening on http://127.0.0.1:8400 worker=1
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+● READY Pam listening on http://127.0.0.1:8400 worker=2
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+● READY Pam listening on http://127.0.0.1:8400 worker=3
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+● READY Pam listening on http://127.0.0.1:8400 worker=4
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+● READY Pam listening on http://127.0.0.1:8400 worker=5
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+● READY Pam listening on http://127.0.0.1:8400 worker=6
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+● READY Pam listening on http://127.0.0.1:8400 worker=7
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+● READY Pam listening on http://127.0.0.1:8400 worker=8
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+Pam master activated worker generation 2
+pam: post-boot zygote ready in 166 ms; forking workers from the booted application
+● READY Pam listening on http://127.0.0.1:8400 worker=1
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+● READY Pam listening on http://127.0.0.1:8400 worker=2
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+● READY Pam listening on http://127.0.0.1:8400 worker=3
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+● READY Pam listening on http://127.0.0.1:8400 worker=4
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+● READY Pam listening on http://127.0.0.1:8400 worker=5
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+● READY Pam listening on http://127.0.0.1:8400 worker=6
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+● READY Pam listening on http://127.0.0.1:8400 worker=7
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+● READY Pam listening on http://127.0.0.1:8400 worker=8
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+Pam master activated worker generation 3
+pam: post-boot zygote ready in 174 ms; forking workers from the booted application
+● READY Pam listening on http://127.0.0.1:8400 worker=1
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+● READY Pam listening on http://127.0.0.1:8400 worker=2
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+● READY Pam listening on http://127.0.0.1:8400 worker=3
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+● READY Pam listening on http://127.0.0.1:8400 worker=4
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+● READY Pam listening on http://127.0.0.1:8400 worker=5
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+● READY Pam listening on http://127.0.0.1:8400 worker=6
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+● READY Pam listening on http://127.0.0.1:8400 worker=7
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+● READY Pam listening on http://127.0.0.1:8400 worker=8
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+Pam master activated worker generation 4
+pam: post-boot zygote ready in 166 ms; forking workers from the booted application
+● READY Pam listening on http://127.0.0.1:8400 worker=1
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+● READY Pam listening on http://127.0.0.1:8400 worker=2
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+● READY Pam listening on http://127.0.0.1:8400 worker=3
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+● READY Pam listening on http://127.0.0.1:8400 worker=4
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+● READY Pam listening on http://127.0.0.1:8400 worker=5
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+● READY Pam listening on http://127.0.0.1:8400 worker=6
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+● READY Pam listening on http://127.0.0.1:8400 worker=7
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+● READY Pam listening on http://127.0.0.1:8400 worker=8
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+Pam master activated worker generation 5
+pam: post-boot zygote ready in 187 ms; forking workers from the booted application
+● READY Pam listening on http://127.0.0.1:8400 worker=1
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+● READY Pam listening on http://127.0.0.1:8400 worker=2
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+● READY Pam listening on http://127.0.0.1:8400 worker=3
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+● READY Pam listening on http://127.0.0.1:8400 worker=4
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+● READY Pam listening on http://127.0.0.1:8400 worker=5
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+● READY Pam listening on http://127.0.0.1:8400 worker=6
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+● READY Pam listening on http://127.0.0.1:8400 worker=7
+pam: connection balancing disabled: path must be shorter than SUN_LEN
+● READY Pam listening on http://127.0.0.1:8400 worker=8
+pam: connection balancing disabled: path must be shorter than SUN_LEN

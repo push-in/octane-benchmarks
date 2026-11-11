@@ -1,0 +1,1 @@
+{"workers": 16, "cold_start_ms": 417, "respawn_after_sigkill_ms": {"n": 5, "min": 261.8, "p50": 282.1, "max": 282.2}, "reload_ms": {"n": 5, "min": 308, "p50": 316, "max": 332}, "spawn_to_ready_ms": {"n": 32, "min": 191, "p50": 229.0, "max": 275}}

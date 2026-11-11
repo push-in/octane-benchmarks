@@ -1,0 +1,9 @@
+scenario,tcp_migrate_req,connections,requests,socket_errors,non_2xx,reloads,failed_reloads,rps
+reload,1,keep-alive,393283,0,0,13,0,6551.49
+reload,1,close,406594,0,0,13,0,6773.08
+reload,0,keep-alive,400293,0,0,13,0,6667.30
+reload,0,close,390663,0,0,13,0,6506.86
+recycle,1,keep-alive,412376,0,0,0,0,6870.28
+recycle,1,close,472602,0,0,0,0,7872.84
+recycle,0,keep-alive,418889,0,0,0,0,6978.90
+recycle,0,close,485024,0,0,0,0,8079.00

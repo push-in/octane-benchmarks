@@ -1,0 +1,24 @@
+tcp_migrate_req=0
+Running 1m test @ http://127.0.0.1:8500/_r/hello
+  4 threads and 64 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     7.91ms    2.36ms  92.62ms   86.29%
+    Req/Sec     2.03k   265.42     2.84k    68.38%
+  Latency Distribution
+     50%    7.75ms
+     75%    8.86ms
+     90%   10.04ms
+     99%   11.88ms
+  485024 requests in 1.00m, 83.72MB read
+Requests/sec:   8079.00
+Transfer/sec:      1.39MB
+RELOADS=0 FAILED_RELOADS=0
+--- reload log
+grep: /tmp/reload.log: No such file or directory
+
+   INFO  Stopping server...  
+
+--- server log
+   INFO  Server running….  
+  Local: http://127.0.0.1:8500 
+  Press Ctrl+C to stop the server

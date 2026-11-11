@@ -1,0 +1,16 @@
+
+   INFO  PAM Octane listening on http://127.0.0.1:8400.  
+
+  ⇂ Laravel booted once  
+  ⇂ Octane request isolation enabled  
+  ⇂ Rust + Tokio transport active  
+pam: post-boot zygote ready in 279 ms; forking workers from the booted application
+● READY Pam listening on http://127.0.0.1:8400 worker=1
+● READY Pam listening on http://127.0.0.1:8400 worker=2
+● READY Pam listening on http://127.0.0.1:8400 worker=3
+● READY Pam listening on http://127.0.0.1:8400 worker=4
+● READY Pam listening on http://127.0.0.1:8400 worker=5
+● READY Pam listening on http://127.0.0.1:8400 worker=6
+● READY Pam listening on http://127.0.0.1:8400 worker=7
+● READY Pam listening on http://127.0.0.1:8400 worker=8
+Pam master 1 started 8 worker(s); send SIGHUP for zero-downtime reload

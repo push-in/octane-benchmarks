@@ -1,0 +1,13 @@
+Running 15s test @ http://127.0.0.1:8400/_r/view-cached
+  4 threads and 64 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   368.17us  768.28us  14.12ms   90.34%
+    Req/Sec   114.68k    12.47k  208.10k    78.74%
+  Latency Distribution
+     50%  121.00us
+     75%  154.00us
+     90%    1.08ms
+     99%    3.59ms
+  6866314 requests in 15.10s, 7.70GB read
+Requests/sec: 454664.82
+Transfer/sec:    521.95MB
