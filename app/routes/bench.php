@@ -14,6 +14,9 @@ Route::prefix('_r')->group(function () {
         DB::table('users')->where('id', random_int(1, 100))->first(),
     ));
     Route::get('/view', fn () => view('bench', ['items' => range(1, 20)]));
+    // The same page, cacheable by a shared cache for 60 s (scripts/page-cache.sh).
+    Route::get('/view-cached', fn () => response(view('bench', ['items' => range(1, 20)]))
+        ->header('Cache-Control', 'public, s-maxage=60'));
 
     Route::get('/pid', fn () => response()->json(['pid' => getmypid()]));
 
