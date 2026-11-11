@@ -30,6 +30,10 @@ for round in $(seq 1 "$ROUNDS"); do
     for cache in true false; do
         log "page cache round $round/$ROUNDS: PAM_RESPONSE_CACHE=$cache"
         docker rm -f bench-pagecache >/dev/null 2>&1 || true
+        # `artisan optimize` caches the configuration, so the setting is
+        # applied by caching it again.
+        docker run --rm --user "$(id -u):$(id -g)" -e HOME=/tmp -v "$CACHE_APP:$CACHE_APP" -w "$CACHE_APP" \
+            -e PAM_RESPONSE_CACHE="$cache" -e PAM_RESPONSE_CACHE_STATUS_HEADER=true "$IMAGE_PAM" pam artisan config:cache -q
         docker run -d --rm --name bench-pagecache --network host --cpuset-cpus "$SERVER_CPUS" \
             --user "$(id -u):$(id -g)" -e HOME=/tmp -v "$CACHE_APP:$CACHE_APP" -w "$CACHE_APP" \
             -e PAM_RESPONSE_CACHE="$cache" -e PAM_RESPONSE_CACHE_STATUS_HEADER=true "$IMAGE_PAM" \
@@ -49,6 +53,7 @@ for round in $(seq 1 "$ROUNDS"); do
                 "$(( $(cat "$cg/memory.current") / 1048576 ))" "$(( $(cat "$cg/memory.peak" 2>/dev/null || echo 0) / 1048576 ))" \
                 | sed "s/,cache-$cache,/,$cache,/" | tee -a "$OUT/page-cache.csv"
         done
+        curl -fsS -D - -o /dev/null "http://127.0.0.1:$PORT/_r/view-cached" >> "$OUT/raw/headers-$cache-$round.txt"
         docker logs bench-pagecache > "$OUT/raw/server-$cache-$round.log" 2>&1 || true
         docker rm -f bench-pagecache >/dev/null
         sleep 3
